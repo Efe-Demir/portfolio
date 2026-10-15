@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<title>Remzi Efe Demir Portföy</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Remzi Efe Demir — mekatronik mühendisliği öğrencisi. Sürü drone, otonom İHA, AUV ve İDA projeleri: özgün PCB, güç elektroniği, gömülü uçuş kontrolü ve yapay zekâ.">
+<meta property="og:title" content="Remzi Efe Demir — Mühendislik Portföyü">
+<meta property="og:description" content="HAVELSAN ve AFAD onaylı sürü drone, hareketli platforma iniş yapan İHA, ROKETSAN KOZ faydalı yük, AUV ve İDA.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="https://efe-demir.github.io/portfolio/">
+<link rel="alternate" hreflang="tr" href="https://efe-demir.github.io/portfolio/tr.html">
+<link rel="alternate" hreflang="x-default" href="https://efe-demir.github.io/portfolio/">
+<meta property="og:image" content="https://efe-demir.github.io/portfolio/og.webp">
+<meta property="og:url" content="https://efe-demir.github.io/portfolio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2313243B'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23E4A245' text-anchor='middle'%3EED%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: engineering drawing sheet. Each project is a "sheet" with a title block (role/period/status/stack), What/How/Result, and numbered figures. */
+:root{
+  --paper:#EEF1F4; --sheet:#F8FAFB; --ink:#13243B; --ink-2:#4A5A6E; --rule:#C9D2DC;
+  --signal:#B8730F; --signal-soft:#F4E6CF; --live:#1F7A55; --live-soft:#DCEFE6;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1621; --sheet:#141F2C; --ink:#E4EAF1; --ink-2:#9AA9BA; --rule:#2A3949;
+  --signal:#E4A245; --signal-soft:#3A2C17; --live:#5CC495; --live-soft:#173328; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1621; --sheet:#141F2C; --ink:#E4EAF1; --ink-2:#9AA9BA; --rule:#2A3949;
+  --signal:#E4A245; --signal-soft:#3A2C17; --live:#5CC495; --live-soft:#173328; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:inherit;text-decoration-color:var(--signal);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Header */
+header{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:end;padding-block:56px 32px;border-bottom:2px solid var(--ink)}
+header h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;font-stretch:118%;letter-spacing:-.01em}
+header h1 span{display:block;color:var(--signal)}
+.lede{max-width:58ch;color:var(--ink-2);margin:20px 0 0;font-size:1.05rem}
+.tblock{border:1.5px solid var(--ink);display:grid;grid-template-columns:auto 1fr;font-size:.9rem;background:var(--sheet)}
+.tblock div{padding:8px 12px;border-bottom:1px solid var(--rule)}
+.tblock div:nth-child(odd){border-right:1px solid var(--rule)}
+.tblock div:nth-last-child(-n+2){border-bottom:0}
+.tblock .mono{font-size:.68rem;align-self:center}
+.contact{display:flex;flex-wrap:wrap;gap:8px 24px;padding-block:16px;border-bottom:1px solid var(--rule);font-size:.92rem}
+.contact span{user-select:all}
+
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;padding-block:20px}
+nav.toc a{font-family:var(--f-mono);font-size:.78rem;text-decoration:none;border:1px solid var(--rule);padding:6px 10px;background:var(--sheet)}
+nav.toc a:hover{border-color:var(--signal)}
+
+/* Sheets */
+section.sheet{margin-top:40px;background:var(--sheet);border:1px solid var(--rule)}
+.sheet-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:28px 28px 20px}
+.sheet-head h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:750;font-stretch:112%}
+.sheet-head .sub{margin:8px 0 0;color:var(--ink-2);max-width:60ch}
+.dwg{font-family:var(--f-mono);font-size:.75rem;color:var(--ink-2);text-align:right;white-space:nowrap}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.meta>div{padding:12px 28px 14px;border-right:1px solid var(--rule);min-width:0}
+.meta>div:last-child{border-right:0}
+.meta b{display:block;font-weight:500;font-size:.95rem;margin-top:2px}
+.status{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;margin-top:4px}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.s-live{color:var(--live);background:var(--live-soft)}
+.s-done{color:var(--ink-2);background:var(--paper)}
+.s-dev{color:var(--signal);background:var(--signal-soft)}
+
+.whr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.whr>div{padding:20px 28px 24px;border-right:1px solid var(--rule);min-width:0}
+.whr>div:last-child{border-right:0}
+.whr h3{font-family:var(--f-mono);font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:10px}
+.whr ul{margin:0;padding-left:18px}
+.whr li{margin-bottom:6px}
+.whr p{margin:0}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:0 28px 28px}
+.figs.wide{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+figure{margin:0;border:1px solid var(--rule);background:#fff;display:flex;flex-direction:column}
+figure img{width:100%;height:180px;object-fit:contain;display:block;padding:6px;background:#fff}
+.figs.wide figure img{height:220px}
+figcaption{font-family:var(--f-mono);font-size:.7rem;color:#4A5A6E;padding:8px 10px;border-top:1px solid #DDE3E9;background:#fff;margin-top:auto}
+.note{margin:0 28px 28px;padding:14px 16px;border-left:3px solid var(--signal);background:var(--signal-soft);font-size:.93rem}
+.btn{display:inline-block;margin:0 28px 28px;font-family:var(--f-mono);font-size:.8rem;text-decoration:none;border:1.5px solid var(--ink);padding:8px 14px}
+.btn:hover{background:var(--ink);color:var(--sheet)}
+
+/* Experience + skills */
+.cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;margin-top:40px}
+.panel{background:var(--sheet);border:1px solid var(--rule);padding:24px 28px}
+.panel h2{font-size:1.6rem;font-weight:750;font-stretch:112%;margin-bottom:16px}
+.xp{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px;padding-block:12px;border-top:1px solid var(--rule)}
+.xp:first-of-type{border-top:0}
+.xp .mono{font-size:.7rem;padding-top:3px}
+.xp b{font-weight:600}
+.xp p{margin:2px 0 0;color:var(--ink-2);font-size:.93rem}
+.skills dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-top:14px}
+.skills dt:first-child{margin-top:0}
+.skills dd{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;border:1px solid var(--rule);padding:2px 8px;background:var(--paper)}
+footer{margin-top:40px;padding-top:16px;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+@media (max-width:820px){
+  header{grid-template-columns:1fr;padding-block:36px 24px}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .meta>div:nth-child(2){border-right:0}
+  .meta>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .whr{grid-template-columns:1fr}
+  .whr>div{border-right:0;border-bottom:1px solid var(--rule)}
+  .whr>div:last-child{border-bottom:0}
+  .cols{grid-template-columns:1fr}
+  .sheet-head{grid-template-columns:1fr}
+  .dwg{text-align:left}
+}
+@media (max-width:480px){
+  .sheet-head,.whr>div,.meta>div,.panel{padding-left:18px;padding-right:18px}
+  .figs{padding:0 18px 18px}
+  .note{margin:0 18px 18px}.btn{margin:0 18px 18px}
+  .xp{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){nav.toc a,.btn{transition:background .15s,border-color .15s}}
+.lang{display:inline-flex;border:1px solid var(--rule);background:var(--sheet);margin-left:12px;vertical-align:middle}
+.lang a,.lang span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;padding:3px 9px;text-decoration:none}
+.lang span{background:var(--ink);color:var(--sheet)}
+.lang a:hover{background:var(--signal-soft)}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <p class="mono">Mühendislik portföyü · Rev. Eki 2026 <span class="lang" aria-label="Dil"><a href="./" hreflang="en" lang="en">EN</a><span aria-current="true">TR</span></span></p>
+    <h1>Remzi Efe<span>Demir</span></h1>
+    <p class="lede">Otonom araçları uçtan uca geliştiren mekatronik mühendisliği öğrencisi: CAD'de gövde tasarımı, özgün PCB'lerde güç ve uçuş elektroniği, kontrol yazılımı ve artık öğrenen otonomi. HAVELSAN ve AFAD onaylı, GPS'siz ortamda çalışan sürü drone projesini yönetiyor.</p>
+  </div>
+  <div class="tblock" aria-label="Özet">
+    <div class="mono">Bölüm</div><div>Mekatronik Mühendisliği</div>
+    <div class="mono">Üniversite</div><div>Atılım Üniversitesi, Ankara</div>
+    <div class="mono">Odak</div><div>Gömülü sistemler · Güç elektroniği · Otonom İHA</div>
+    <div class="mono">Ortamlar</div><div>Hava · Su üstü · Su altı</div>
+  </div>
+</header>
+
+<div class="contact">
+  <span>efedemir425@gmail.com</span>
+  <span>+90 532 777 6640</span>
+  <a href="https://www.linkedin.com/in/efe-demir-4bb3092b9" target="_blank" rel="noopener">linkedin.com/in/efe-demir-4bb3092b9</a>
+  <span>Ankara, Türkiye</span>
+  <a href="cv/Remzi_Efe_Demir_CV_EN.pdf" target="_blank" rel="noopener">CV (EN, PDF)</a>
+  <a href="cv/Remzi_Efe_Demir_CV_TR.pdf" target="_blank" rel="noopener">CV (TR, PDF)</a>
+</div>
+
+<nav class="toc" aria-label="Projeler">
+  <a href="#swarm">01 Sürü Drone</a>
+  <a href="#tracker">02 Hareketli Platforma İniş İHA</a>
+  <a href="#koz">03 ROKETSAN KOZ Faydalı Yük</a>
+  <a href="#auv">04 AUV</a>
+  <a href="#usv">05 İDA</a>
+  <a href="#experience">Deneyim ve Yetkinlikler</a>
+</nav>
+
+<!-- 01 SWARM -->
+<section class="sheet" id="swarm">
+  <div class="sheet-head">
+    <div>
+      <h2>Sürü Drone</h2>
+      <p class="sub">Uydu konumlamanın olmadığı kapalı alanlarda formasyon uçuşu yapan taktik drone sürüsü.</p>
+    </div>
+    <div class="dwg">PAFTA 01 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Rol</span><b>Proje Lideri · 7 kişilik ekip</b></div>
+    <div><span class="mono">Dönem</span><b>Haz 2025 – Devam</b></div>
+    <div><span class="mono">Durum</span><br><span class="status s-live">Sim2Real</span></div>
+    <div><span class="mono">Onay</span><b>HAVELSAN ve AFAD onaylı</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>Ne</h3><ul>
+      <li>GPS'siz kapalı ortamlarda otonom sürü operasyonu.</li>
+      <li>Uydu konumlaması olmadan, düşük birim maliyetle formasyon uçuşu.</li>
+    </ul></div>
+    <div><h3>Nasıl</h3><ul>
+      <li>SolidWorks'te tasarlanıp 3D basılan modüler gövde.</li>
+      <li>Altium Designer'da tasarlanan, güç dağıtımlı uçuş kontrol taşıyıcı kartı.</li>
+      <li>RF telemetrili ve CRC kontrollü paketlerle çalışan el kumandası PCB'si.</li>
+      <li>Hazır uçuş kontrolcüsü yerine ESP32 üzerinde kendi PID uçuş kontrol algoritmamız.</li>
+      <li>Otonom uçuş için kendi yapay zekâ modelimizi eğitiyoruz.</li>
+    </ul></div>
+    <div><h3>Sonuç</h3><ul>
+      <li>Tamamen ekip içinde üretilmiş uçuşa hazır prototipler.</li>
+      <li>Proje HAVELSAN ve AFAD tarafından onaylandı.</li>
+      <li>Yapay zekâ modeli sim2real aşamasında: önce tek drone demosu, ardından sürüye geçiş.</li>
+    </ul></div>
+  </div>
+  <div class="figs">
+    <figure><img src="img/sw-built.webp" alt="Tezgâh üzerinde montajlı sürü drone prototipi" loading="lazy"><figcaption>ŞEKİL 1.1 · Montajlı prototip</figcaption></figure>
+    <figure><img src="img/sw-cad.webp" alt="SolidWorks render of the drone" loading="lazy"><figcaption>ŞEKİL 1.2 · Gövde, SolidWorks</figcaption></figure>
+    <figure><img src="img/sw-frame.webp" alt="CAD model of the X-frame" loading="lazy"><figcaption>ŞEKİL 1.3 · Modüler X gövde</figcaption></figure>
+    <figure><img src="img/sw-fc.webp" alt="ESP32 flight controller carrier board" loading="lazy"><figcaption>ŞEKİL 1.4 · Uçuş kontrol taşıyıcı kartı, ESP32</figcaption></figure>
+    <figure><img src="img/sw-layout.webp" alt="PCB layout in Altium" loading="lazy"><figcaption>ŞEKİL 1.5 · PCB yerleşimi, Altium</figcaption></figure>
+    <figure><img src="img/sw-pcbs.webp" alt="Etched in-house PCBs" loading="lazy"><figcaption>ŞEKİL 1.6 · Atölyede üretilen kartlar</figcaption></figure>
+    <figure><img src="img/sw-solder.webp" alt="Soldering a board" loading="lazy"><figcaption>ŞEKİL 1.7 · Kart montajı</figcaption></figure>
+    <figure><img src="img/sw-rc.webp" alt="Handheld drone test" loading="lazy"><figcaption>ŞEKİL 1.8 · Tezgâh uçuş testi</figcaption></figure>
+    <figure><img src="img/sw-arch.webp" alt="Block diagram: FC, Raspberry Pi, camera, object recognition, GPS" loading="lazy"><figcaption>ŞEKİL 1.9 · Görüntü işleme akışı</figcaption></figure>
+    <figure><img src="img/sw-flow.webp" alt="Mission flowchart: takeoff, detection, tracking, data save, landing" loading="lazy"><figcaption>ŞEKİL 1.10 · Görev akışı</figcaption></figure>
+  </div>
+  <a class="btn" href="https://drive.google.com/file/d/1lw1m-O8D2rFoCu51WaogLOQu0sLISY9d/view?usp=sharing" target="_blank" rel="noopener">PID algoritma akış şeması ↗</a>
+</section>
+
+<!-- 02 TRACKER -->
+<section class="sheet" id="tracker">
+  <div class="sheet-head">
+    <div>
+      <h2>Otonom Takip ve Hareketli Platforma İniş Yapan İHA</h2>
+      <p class="sub">Hedefi kendi başına takip eden, hareket hâlindeki bir platformdan kalkıp yine ona iniş yapan drone.</p>
+    </div>
+    <div class="dwg">PAFTA 02 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Rol</span><b>Proje Lideri · 6 kişilik ekip</b></div>
+    <div><span class="mono">Dönem</span><b>2026 – Devam</b></div>
+    <div><span class="mono">Durum</span><br><span class="status s-dev">Geliştiriliyor</span></div>
+    <div><span class="mono">Hedef</span><b>2027'de tamamlanması</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>Ne</h3><p>Otonom hedef takibi ve hareketli platforma otonom kalkış-iniş; sürü projesine paralel olarak geliştiriliyor.</p></div>
+    <div><h3>Nasıl</h3><p>Sürü drone için ekip içinde geliştirilen uçuş donanımı ve kontrol altyapısı üzerine kuruluyor.</p></div>
+    <div><h3>Sonuç</h3><p>Devam ediyor. Kilometre taşlarına ulaşıldıkça sonuçlar ve uçuş videoları buraya eklenecek.</p></div>
+  </div>
+</section>
+
+<!-- 03 KOZ -->
+<section class="sheet" id="koz">
+  <div class="sheet-head">
+    <div>
+      <h2>ROKETSAN KOZ Faydalı Yük Entegrasyonu</h2>
+      <p class="sub">Dört bacaklı robotun görev yükü taşımasını sağlayan entegrasyon sistemi.</p>
+    </div>
+    <div class="dwg">PAFTA 03 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Kurum</span><b>QuadRobotics Ar-Ge</b></div>
+    <div><span class="mono">Dönem</span><b>Oca – Mar 2025</b></div>
+    <div><span class="mono">Durum</span><br><span class="status s-done">Tamamlandı</span></div>
+    <div><span class="mono">Standartlar</span><b>MIL-STD-810 · MIL-STD-498</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>Ne</h3><p>ROKETSAN KOZ dört bacaklı platformuna faydalı yük entegrasyonu.</p></div>
+    <div><h3>Nasıl</h3><ul><li>SolidWorks ile CAD tasarımı.</li><li>Tasarımın MIL-STD standartlarına uygunluğu kontrol edildi.</li><li>Robot köpek platformlarında faydalı yük donanım entegrasyonu; NACA tabanlı kanat profili tasarımı.</li></ul></div>
+    <div><h3>Sonuç</h3><p>Entegrasyon başarıyla tamamlandı.</p></div>
+  </div>
+  <div class="figs wide">
+    <figure><img src="img/koz.webp" alt="Quadruped robot carrying a payload" loading="lazy"><figcaption>ŞEKİL 3.1 · Faydalı yük entegre edilmiş KOZ</figcaption></figure>
+  </div>
+</section>
+
+<!-- 04 AUV -->
+<section class="sheet" id="auv">
+  <div class="sheet-head">
+    <div>
+      <h2>Otonom Su Altı Aracı (AUV)</h2>
+      <p class="sub">Anomali tespiti ve keşif için su altı aracı.</p>
+    </div>
+    <div class="dwg">PAFTA 04 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Rol</span><b>Elektronik Takım Lideri</b></div>
+    <div><span class="mono">Takım</span><b>JupiterOcean</b></div>
+    <div><span class="mono">Durum</span><br><span class="status s-done">Çalışan araç</span></div>
+    <div><span class="mono">Sunum</span><b>UMTİK'24 · MÜBAK'24</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>Ne</h3><p>Su altında anomali tespit eden ve keşif yapan bir AUV.</p></div>
+    <div><h3>Nasıl</h3><ul>
+      <li>Güç elektroniği, özel devreler ve batarya sistemi.</li>
+      <li>PCB tasarımı, sensör entegrasyonu ve haberleşme altyapısının yönetimi.</li>
+      <li>Kalman filtreli IMU testleri; PID yönelim kontrolü.</li>
+      <li>OpenCV ve YOLOv5 ile anomali tespiti.</li>
+    </ul></div>
+    <div><h3>Sonuç</h3><p>Mekanik, elektronik ve yazılım entegrasyonuyla çalışan bir araca dönüştürüldü.</p></div>
+  </div>
+  <div class="figs wide">
+    <figure><img src="img/auv-pool.webp" alt="AUV in a pool" loading="lazy"><figcaption>ŞEKİL 4.1 · Havuz testi</figcaption></figure>
+    <figure><img src="img/auv-arch.webp" alt="AUV electronic system diagram" loading="lazy"><figcaption>ŞEKİL 4.2 · Elektronik mimari</figcaption></figure>
+    <figure><img src="img/auv-cad.webp" alt="AUV CAD renders" loading="lazy"><figcaption>ŞEKİL 4.3 · CAD, SolidWorks</figcaption></figure>
+    <figure><img src="img/auv-cv.webp" alt="Underwater detection frames" loading="lazy"><figcaption>ŞEKİL 4.4 · Görüntü işleme testleri</figcaption></figure>
+  </div>
+</section>
+
+<!-- 05 USV -->
+<section class="sheet" id="usv">
+  <div class="sheet-head">
+    <div>
+      <h2>İnsansız Deniz Aracı (İDA)</h2>
+      <p class="sub">Hedeflere kamikaze İHA fırlatan su üstü platformu.</p>
+    </div>
+    <div class="dwg">PAFTA 05 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Rol</span><b>Elektronik Takım Lideri</b></div>
+    <div><span class="mono">Dönem</span><b>2024 – 2025</b></div>
+    <div><span class="mono">Durum</span><br><span class="status s-done">Üretildi, kablajı yapıldı</span></div>
+    <div><span class="mono">Sunum</span><b>MÜBAK'25</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>Ne</h3><p>Kamikaze İHA taşıyıp fırlatan bir İDA.</p></div>
+    <div><h3>Nasıl</h3><ul><li>Altium Designer'da elektronik sistem mimarisi ve şemaları.</li><li>İDA ile kamikaze birimler arasında RF haberleşme hattı.</li><li>SolidWorks ile CAD.</li></ul></div>
+    <div><h3>Sonuç</h3><p>Mekanik üretim ve elektronik kablaj tamamlandı. “İnsansız Deniz ve Hava Araçları ile Entegre Sistemiyle Otonom Arama-Kurtarma” başlığıyla sunuldu.</p></div>
+  </div>
+  <div class="figs wide">
+    <figure><img src="img/usv-built.webp" alt="Built USV hull" loading="lazy"><figcaption>ŞEKİL 5.1 · Üretilen gövde</figcaption></figure>
+    <figure><img src="img/usv-cad.webp" alt="USV CAD renders" loading="lazy"><figcaption>ŞEKİL 5.2 · CAD, SolidWorks</figcaption></figure>
+    <figure><img src="img/usv-arch.webp" alt="USV and UAV system block diagram" loading="lazy"><figcaption>ŞEKİL 5.3 · İDA–İHA sistem şeması</figcaption></figure>
+  </div>
+</section>
+
+<div class="cols" id="experience">
+  <div class="panel">
+    <h2>Deneyim</h2>
+    <div class="xp"><span class="mono">Ağu 2026 – devam</span><div><b>Neutronix Technologies</b> · Gönüllü Stajyer (uzaktan)<p>Anahtarlamalı güç kaynakları: flyback tasarımı, LTspice simülasyonu, Altium ile PCB tasarımı ve montajı, STM32, SOP ve Lastenheft dokümantasyonu.</p></div></div>
+    <div class="xp"><span class="mono">Tem – Ağu 2026</span><div><b>MZD Elektrik Elektronik A.Ş.</b> · Mekatronik Mühendisliği Stajyeri<p>Savunma sanayii kablaj üreticisi. İş emrinden sevkiyata IFS ERP üzerinde üretim planlama; üretim sahası SOP'leri.</p></div></div>
+    <div class="xp"><span class="mono">Eyl 2024 – Ağu 2026</span><div><b>JupiterOcean Takımı</b> · Elektronik Takım Lideri<p>AUV ve İDA elektroniği: Altium, ESP32, Arduino, Jetson, ROS, SolidWorks; ekip yönetimi.</p></div></div>
+    <div class="xp"><span class="mono">Oca – Mar 2025</span><div><b>QuadRobotics Ar-Ge ve Yazılım</b> · Gönüllü Stajyer<p>ROKETSAN KOZ faydalı yük entegrasyonu; MIL-STD-810, MIL-STD-498.</p></div></div>
+    <div class="xp"><span class="mono">2024 – 2025</span><div><b>Giyilebilir sağlık takip cihazı</b> · Gömülü Yazılım Geliştirici<p>Disotonomi hastaları için I2C, SPI ve UART üzerinden sensör verisi. Ankara Üniversitesi birincilik ödülü.</p></div></div>
+  </div>
+  <div class="panel">
+    <h2>Yetkinlikler</h2>
+    <dl class="skills">
+      <dt>Elektronik</dt><dd><span class="chip">Altium Designer</span><span class="chip">PCB tasarımı ve montajı</span><span class="chip">SMPS / Flyback</span><span class="chip">LTspice</span><span class="chip">BMS tasarımı</span><span class="chip">RF haberleşme</span><span class="chip">I2C · SPI · UART</span></dd>
+      <dt>Gömülü</dt><dd><span class="chip">STM32</span><span class="chip">ESP32</span><span class="chip">Arduino</span><span class="chip">Raspberry Pi</span><span class="chip">NVIDIA Jetson</span><span class="chip">C/C++</span><span class="chip">Linux</span></dd>
+      <dt>Otonomi ve Yapay Zekâ</dt><dd><span class="chip">PID kontrol</span><span class="chip">Kalman filtresi</span><span class="chip">ROS</span><span class="chip">Python</span><span class="chip">Pekiştirmeli öğrenme</span><span class="chip">OpenCV</span><span class="chip">YOLOv5</span><span class="chip">Sim2Real</span></dd>
+      <dt>Mekanik</dt><dd><span class="chip">SolidWorks</span><span class="chip">Siemens NX</span><span class="chip">3D baskı</span></dd>
+      <dt>Süreç ve Standartlar</dt><dd><span class="chip">MIL-STD-810</span><span class="chip">MIL-STD-498</span><span class="chip">SOP</span><span class="chip">Lastenheft</span><span class="chip">IFS ERP</span></dd>
+      <dt>Diller</dt><dd><span class="chip">Türkçe</span><span class="chip">İngilizce</span><span class="chip">Danca</span></dd>
+    </dl>
+  </div>
+</div>
+
+<footer>
+  <span class="mono">Remzi Efe Demir · Mekatronik Mühendisliği</span>
+  <span class="mono">Atılım Üniversitesi · Ankara</span>
+</footer>
+</div>
+
+</body>
+</html>

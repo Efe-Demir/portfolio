@@ -8,10 +8,13 @@
 <meta property="og:title" content="Remzi Efe Demir — Engineering Portfolio">
 <meta property="og:description" content="Swarm drone (approved by HAVELSAN & AFAD), moving-platform landing UAV, ROKETSAN KOZ payload, AUV and USV.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="og.webp">
+<link rel="alternate" hreflang="en" href="https://efe-demir.github.io/portfolio/">
+<link rel="alternate" hreflang="tr" href="https://efe-demir.github.io/portfolio/tr.html">
+<link rel="alternate" hreflang="x-default" href="https://efe-demir.github.io/portfolio/">
+<meta property="og:image" content="https://efe-demir.github.io/portfolio/og.webp">
+<meta property="og:url" content="https://efe-demir.github.io/portfolio/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2313243B'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23E4A245' text-anchor='middle'%3EED%3C/text%3E%3C/svg%3E">
 
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -129,6 +132,10 @@ footer{margin-top:40px;padding-top:16px;border-top:2px solid var(--ink);display:
   .xp{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:no-preference){nav.toc a,.btn{transition:background .15s,border-color .15s}}
+.lang{display:inline-flex;border:1px solid var(--rule);background:var(--sheet);margin-left:12px;vertical-align:middle}
+.lang a,.lang span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;padding:3px 9px;text-decoration:none}
+.lang span{background:var(--ink);color:var(--sheet)}
+.lang a:hover{background:var(--signal-soft)}
 </style>
 
 </head>
@@ -136,7 +143,7 @@ footer{margin-top:40px;padding-top:16px;border-top:2px solid var(--ink);display:
 <div class="wrap">
 <header>
   <div>
-    <p class="mono">Engineering portfolio · Rev. Oct 2026</p>
+    <p class="mono">Engineering portfolio · Rev. Oct 2026 <span class="lang" aria-label="Language"><span aria-current="true">EN</span><a href="tr.html" hreflang="tr" lang="tr">TR</a></span></p>
     <h1>Remzi Efe<span>Demir</span></h1>
     <p class="lede">Mechatronics engineering student building autonomous vehicles end to end: airframe in CAD, power and flight electronics on custom PCBs, control firmware, and now learned autonomy. Leading a GPS-denied swarm drone project approved by HAVELSAN and AFAD.</p>
   </div>
