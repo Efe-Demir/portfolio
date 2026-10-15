@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Remzi Efe Demir Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Remzi Efe Demir — mechatronics engineering student. Swarm drone, autonomous UAV, AUV and USV projects: custom PCBs, power electronics, embedded flight control and AI.">
+<meta property="og:title" content="Remzi Efe Demir — Engineering Portfolio">
+<meta property="og:description" content="Swarm drone (approved by HAVELSAN & AFAD), moving-platform landing UAV, ROKETSAN KOZ payload, AUV and USV.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2313243B'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23E4A245' text-anchor='middle'%3EED%3C/text%3E%3C/svg%3E">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: engineering drawing sheet. Each project is a "sheet" with a title block (role/period/status/stack), What/How/Result, and numbered figures. */
+:root{
+  --paper:#EEF1F4; --sheet:#F8FAFB; --ink:#13243B; --ink-2:#4A5A6E; --rule:#C9D2DC;
+  --signal:#B8730F; --signal-soft:#F4E6CF; --live:#1F7A55; --live-soft:#DCEFE6;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1621; --sheet:#141F2C; --ink:#E4EAF1; --ink-2:#9AA9BA; --rule:#2A3949;
+  --signal:#E4A245; --signal-soft:#3A2C17; --live:#5CC495; --live-soft:#173328; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1621; --sheet:#141F2C; --ink:#E4EAF1; --ink-2:#9AA9BA; --rule:#2A3949;
+  --signal:#E4A245; --signal-soft:#3A2C17; --live:#5CC495; --live-soft:#173328; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:inherit;text-decoration-color:var(--signal);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Header */
+header{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:end;padding-block:56px 32px;border-bottom:2px solid var(--ink)}
+header h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;font-stretch:118%;letter-spacing:-.01em}
+header h1 span{display:block;color:var(--signal)}
+.lede{max-width:58ch;color:var(--ink-2);margin:20px 0 0;font-size:1.05rem}
+.tblock{border:1.5px solid var(--ink);display:grid;grid-template-columns:auto 1fr;font-size:.9rem;background:var(--sheet)}
+.tblock div{padding:8px 12px;border-bottom:1px solid var(--rule)}
+.tblock div:nth-child(odd){border-right:1px solid var(--rule)}
+.tblock div:nth-last-child(-n+2){border-bottom:0}
+.tblock .mono{font-size:.68rem;align-self:center}
+.contact{display:flex;flex-wrap:wrap;gap:8px 24px;padding-block:16px;border-bottom:1px solid var(--rule);font-size:.92rem}
+.contact span{user-select:all}
+
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;padding-block:20px}
+nav.toc a{font-family:var(--f-mono);font-size:.78rem;text-decoration:none;border:1px solid var(--rule);padding:6px 10px;background:var(--sheet)}
+nav.toc a:hover{border-color:var(--signal)}
+
+/* Sheets */
+section.sheet{margin-top:40px;background:var(--sheet);border:1px solid var(--rule)}
+.sheet-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:28px 28px 20px}
+.sheet-head h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:750;font-stretch:112%}
+.sheet-head .sub{margin:8px 0 0;color:var(--ink-2);max-width:60ch}
+.dwg{font-family:var(--f-mono);font-size:.75rem;color:var(--ink-2);text-align:right;white-space:nowrap}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.meta>div{padding:12px 28px 14px;border-right:1px solid var(--rule);min-width:0}
+.meta>div:last-child{border-right:0}
+.meta b{display:block;font-weight:500;font-size:.95rem;margin-top:2px}
+.status{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;margin-top:4px}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.s-live{color:var(--live);background:var(--live-soft)}
+.s-done{color:var(--ink-2);background:var(--paper)}
+.s-dev{color:var(--signal);background:var(--signal-soft)}
+
+.whr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.whr>div{padding:20px 28px 24px;border-right:1px solid var(--rule);min-width:0}
+.whr>div:last-child{border-right:0}
+.whr h3{font-family:var(--f-mono);font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:10px}
+.whr ul{margin:0;padding-left:18px}
+.whr li{margin-bottom:6px}
+.whr p{margin:0}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:0 28px 28px}
+.figs.wide{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+figure{margin:0;border:1px solid var(--rule);background:#fff;display:flex;flex-direction:column}
+figure img{width:100%;height:180px;object-fit:contain;display:block;padding:6px;background:#fff}
+.figs.wide figure img{height:220px}
+figcaption{font-family:var(--f-mono);font-size:.7rem;color:#4A5A6E;padding:8px 10px;border-top:1px solid #DDE3E9;background:#fff;margin-top:auto}
+.note{margin:0 28px 28px;padding:14px 16px;border-left:3px solid var(--signal);background:var(--signal-soft);font-size:.93rem}
+.btn{display:inline-block;margin:0 28px 28px;font-family:var(--f-mono);font-size:.8rem;text-decoration:none;border:1.5px solid var(--ink);padding:8px 14px}
+.btn:hover{background:var(--ink);color:var(--sheet)}
+
+/* Experience + skills */
+.cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;margin-top:40px}
+.panel{background:var(--sheet);border:1px solid var(--rule);padding:24px 28px}
+.panel h2{font-size:1.6rem;font-weight:750;font-stretch:112%;margin-bottom:16px}
+.xp{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px;padding-block:12px;border-top:1px solid var(--rule)}
+.xp:first-of-type{border-top:0}
+.xp .mono{font-size:.7rem;padding-top:3px}
+.xp b{font-weight:600}
+.xp p{margin:2px 0 0;color:var(--ink-2);font-size:.93rem}
+.skills dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-top:14px}
+.skills dt:first-child{margin-top:0}
+.skills dd{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;border:1px solid var(--rule);padding:2px 8px;background:var(--paper)}
+footer{margin-top:40px;padding-top:16px;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+@media (max-width:820px){
+  header{grid-template-columns:1fr;padding-block:36px 24px}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .meta>div:nth-child(2){border-right:0}
+  .meta>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .whr{grid-template-columns:1fr}
+  .whr>div{border-right:0;border-bottom:1px solid var(--rule)}
+  .whr>div:last-child{border-bottom:0}
+  .cols{grid-template-columns:1fr}
+  .sheet-head{grid-template-columns:1fr}
+  .dwg{text-align:left}
+}
+@media (max-width:480px){
+  .sheet-head,.whr>div,.meta>div,.panel{padding-left:18px;padding-right:18px}
+  .figs{padding:0 18px 18px}
+  .note{margin:0 18px 18px}.btn{margin:0 18px 18px}
+  .xp{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){nav.toc a,.btn{transition:background .15s,border-color .15s}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <p class="mono">Engineering portfolio · Rev. Oct 2026</p>
+    <h1>Remzi Efe<span>Demir</span></h1>
+    <p class="lede">Mechatronics engineering student building autonomous vehicles end to end: airframe in CAD, power and flight electronics on custom PCBs, control firmware, and now learned autonomy. Leading a GPS-denied swarm drone project approved by HAVELSAN and AFAD.</p>
+  </div>
+  <div class="tblock" aria-label="Summary">
+    <div class="mono">Discipline</div><div>Mechatronics Engineering</div>
+    <div class="mono">University</div><div>Atılım University, Ankara</div>
+    <div class="mono">Focus</div><div>Embedded systems · Power electronics · Autonomous UAVs</div>
+    <div class="mono">Domains</div><div>Air · Surface · Underwater</div>
+  </div>
+</header>
+
+<div class="contact">
+  <span>efedemir425@gmail.com</span>
+  <span>+90 532 777 6640</span>
+  <a href="https://www.linkedin.com/in/efe-demir-4bb3092b9" target="_blank" rel="noopener">linkedin.com/in/efe-demir-4bb3092b9</a>
+  <span>Ankara, Türkiye</span>
+  <a href="cv/Remzi_Efe_Demir_CV_EN.pdf" target="_blank" rel="noopener">CV (EN, PDF)</a>
+  <a href="cv/Remzi_Efe_Demir_CV_TR.pdf" target="_blank" rel="noopener">CV (TR, PDF)</a>
+</div>
+
+<nav class="toc" aria-label="Projects">
+  <a href="#swarm">01 Swarm Drone</a>
+  <a href="#tracker">02 Moving-Platform Landing UAV</a>
+  <a href="#koz">03 ROKETSAN KOZ Payload</a>
+  <a href="#auv">04 AUV</a>
+  <a href="#usv">05 USV</a>
+  <a href="#experience">Experience &amp; Skills</a>
+</nav>
+
+<!-- 01 SWARM -->
+<section class="sheet" id="swarm">
+  <div class="sheet-head">
+    <div>
+      <h2>Swarm Drone</h2>
+      <p class="sub">A tactical drone swarm that flies in formation indoors, where satellite positioning is not available.</p>
+    </div>
+    <div class="dwg">SHEET 01 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Role</span><b>Project Leader · 7-person team</b></div>
+    <div><span class="mono">Period</span><b>Jun 2025 – Present</b></div>
+    <div><span class="mono">Status</span><br><span class="status s-live">Sim-to-real</span></div>
+    <div><span class="mono">Recognition</span><b>Approved by HAVELSAN &amp; AFAD</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>What</h3><ul>
+      <li>Autonomous swarm operation in GPS-denied indoor environments.</li>
+      <li>Formation flight without satellite positioning, at low unit cost.</li>
+    </ul></div>
+    <div><h3>How</h3><ul>
+      <li>Modular airframe designed in SolidWorks, 3D printed.</li>
+      <li>Flight controller carrier board with power distribution, designed in Altium Designer.</li>
+      <li>Handheld remote controller PCB with RF telemetry and CRC-checked packets.</li>
+      <li>Own PID flight control algorithm on ESP32, no off-the-shelf flight controller.</li>
+      <li>Training our own AI model for autonomous flight.</li>
+    </ul></div>
+    <div><h3>Result</h3><ul>
+      <li>Flight-ready prototypes built entirely in-house.</li>
+      <li>Project approved by HAVELSAN and AFAD.</li>
+      <li>AI model now in sim-to-real transfer: single-drone demo first, then scaled to the swarm.</li>
+    </ul></div>
+  </div>
+  <div class="figs">
+    <figure><img src="img/sw-built.webp" alt="Assembled swarm drone prototype on a workbench" loading="lazy"><figcaption>FIG 1.1 · Assembled prototype</figcaption></figure>
+    <figure><img src="img/sw-cad.webp" alt="SolidWorks render of the drone" loading="lazy"><figcaption>FIG 1.2 · Airframe, SolidWorks</figcaption></figure>
+    <figure><img src="img/sw-frame.webp" alt="CAD model of the X-frame" loading="lazy"><figcaption>FIG 1.3 · Modular X-frame</figcaption></figure>
+    <figure><img src="img/sw-fc.webp" alt="ESP32 flight controller carrier board" loading="lazy"><figcaption>FIG 1.4 · FC carrier board, ESP32</figcaption></figure>
+    <figure><img src="img/sw-layout.webp" alt="PCB layout in Altium" loading="lazy"><figcaption>FIG 1.5 · PCB layout, Altium</figcaption></figure>
+    <figure><img src="img/sw-pcbs.webp" alt="Etched in-house PCBs" loading="lazy"><figcaption>FIG 1.6 · In-house etched boards</figcaption></figure>
+    <figure><img src="img/sw-solder.webp" alt="Soldering a board" loading="lazy"><figcaption>FIG 1.7 · Board assembly</figcaption></figure>
+    <figure><img src="img/sw-rc.webp" alt="Handheld drone test" loading="lazy"><figcaption>FIG 1.8 · Bench flight test</figcaption></figure>
+    <figure><img src="img/sw-arch.webp" alt="Block diagram: FC, Raspberry Pi, camera, object recognition, GPS" loading="lazy"><figcaption>FIG 1.9 · Vision pipeline</figcaption></figure>
+    <figure><img src="img/sw-flow.webp" alt="Mission flowchart: takeoff, detection, tracking, data save, landing" loading="lazy"><figcaption>FIG 1.10 · Mission flow</figcaption></figure>
+  </div>
+  <a class="btn" href="https://drive.google.com/file/d/1lw1m-O8D2rFoCu51WaogLOQu0sLISY9d/view?usp=sharing" target="_blank" rel="noopener">PID algorithm flowchart ↗</a>
+</section>
+
+<!-- 02 TRACKER -->
+<section class="sheet" id="tracker">
+  <div class="sheet-head">
+    <div>
+      <h2>Autonomous Tracking &amp; Moving-Platform Landing UAV</h2>
+      <p class="sub">A drone that follows a target on its own and takes off from, and lands on, a platform that is still moving.</p>
+    </div>
+    <div class="dwg">SHEET 02 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Role</span><b>Project Leader · 6-person team</b></div>
+    <div><span class="mono">Period</span><b>2026 – Present</b></div>
+    <div><span class="mono">Status</span><br><span class="status s-dev">In development</span></div>
+    <div><span class="mono">Target</span><b>Completion in 2027</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>What</h3><p>Autonomous target tracking plus autonomous takeoff and landing on a moving platform, developed in parallel with the swarm project.</p></div>
+    <div><h3>How</h3><p>Builds on the in-house flight hardware and control stack from the swarm drone.</p></div>
+    <div><h3>Result</h3><p>In progress. Results and flight footage will be added here as milestones are reached.</p></div>
+  </div>
+</section>
+
+<!-- 03 KOZ -->
+<section class="sheet" id="koz">
+  <div class="sheet-head">
+    <div>
+      <h2>ROKETSAN KOZ Payload Integration</h2>
+      <p class="sub">Integration system that lets a quadruped robot carry mission payloads.</p>
+    </div>
+    <div class="dwg">SHEET 03 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Organisation</span><b>QuadRobotics R&amp;D</b></div>
+    <div><span class="mono">Period</span><b>Jan – Mar 2025</b></div>
+    <div><span class="mono">Status</span><br><span class="status s-done">Completed</span></div>
+    <div><span class="mono">Standards</span><b>MIL-STD-810 · MIL-STD-498</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>What</h3><p>Payload integration on the ROKETSAN KOZ quadruped platform.</p></div>
+    <div><h3>How</h3><ul><li>CAD design in SolidWorks.</li><li>Checked design compliance against MIL-STD standards.</li><li>Hardware integration of payloads on robot dog platforms; NACA-based airfoil design.</li></ul></div>
+    <div><h3>Result</h3><p>Integration completed successfully.</p></div>
+  </div>
+  <div class="figs wide">
+    <figure><img src="img/koz.webp" alt="Quadruped robot carrying a payload" loading="lazy"><figcaption>FIG 3.1 · KOZ with integrated payload</figcaption></figure>
+  </div>
+</section>
+
+<!-- 04 AUV -->
+<section class="sheet" id="auv">
+  <div class="sheet-head">
+    <div>
+      <h2>Autonomous Underwater Vehicle</h2>
+      <p class="sub">Underwater vehicle for anomaly detection and exploration.</p>
+    </div>
+    <div class="dwg">SHEET 04 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Role</span><b>Electronics Team Leader</b></div>
+    <div><span class="mono">Team</span><b>JupiterOcean</b></div>
+    <div><span class="mono">Status</span><br><span class="status s-done">Working vehicle</span></div>
+    <div><span class="mono">Presented</span><b>UMTİK'24 · MÜBAK'24</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>What</h3><p>An AUV that detects anomalies and explores underwater.</p></div>
+    <div><h3>How</h3><ul>
+      <li>Power electronics, custom circuitry and battery system.</li>
+      <li>Led PCB design, sensor integration and communication infrastructure.</li>
+      <li>IMU tests with Kalman filter; PID orientation control.</li>
+      <li>Anomaly detection with OpenCV and YOLOv5.</li>
+    </ul></div>
+    <div><h3>Result</h3><p>Turned into a working vehicle through mechanical, electronic and software integration.</p></div>
+  </div>
+  <div class="figs wide">
+    <figure><img src="img/auv-pool.webp" alt="AUV in a pool" loading="lazy"><figcaption>FIG 4.1 · Pool test</figcaption></figure>
+    <figure><img src="img/auv-arch.webp" alt="AUV electronic system diagram" loading="lazy"><figcaption>FIG 4.2 · Electronic architecture</figcaption></figure>
+    <figure><img src="img/auv-cad.webp" alt="AUV CAD renders" loading="lazy"><figcaption>FIG 4.3 · CAD, SolidWorks</figcaption></figure>
+    <figure><img src="img/auv-cv.webp" alt="Underwater detection frames" loading="lazy"><figcaption>FIG 4.4 · Vision tests</figcaption></figure>
+  </div>
+</section>
+
+<!-- 05 USV -->
+<section class="sheet" id="usv">
+  <div class="sheet-head">
+    <div>
+      <h2>Unmanned Surface Vehicle</h2>
+      <p class="sub">Surface platform that deploys kamikaze drones against targets.</p>
+    </div>
+    <div class="dwg">SHEET 05 / 05</div>
+  </div>
+  <div class="meta">
+    <div><span class="mono">Role</span><b>Electronics Team Leader</b></div>
+    <div><span class="mono">Period</span><b>2024 – 2025</b></div>
+    <div><span class="mono">Status</span><br><span class="status s-done">Built &amp; cabled</span></div>
+    <div><span class="mono">Presented</span><b>MÜBAK'25</b></div>
+  </div>
+  <div class="whr">
+    <div><h3>What</h3><p>A USV that carries and launches kamikaze drones.</p></div>
+    <div><h3>How</h3><ul><li>Electronic system architecture and schematics in Altium Designer.</li><li>RF communication link between the USV and the kamikaze units.</li><li>CAD in SolidWorks.</li></ul></div>
+    <div><h3>Result</h3><p>Mechanical production and electronic cabling completed. Presented as “Autonomous Search and Rescue with an Integrated Unmanned Marine and Aerial Vehicle System”.</p></div>
+  </div>
+  <div class="figs wide">
+    <figure><img src="img/usv-built.webp" alt="Built USV hull" loading="lazy"><figcaption>FIG 5.1 · Manufactured hull</figcaption></figure>
+    <figure><img src="img/usv-cad.webp" alt="USV CAD renders" loading="lazy"><figcaption>FIG 5.2 · CAD, SolidWorks</figcaption></figure>
+    <figure><img src="img/usv-arch.webp" alt="USV and UAV system block diagram" loading="lazy"><figcaption>FIG 5.3 · USV–UAV system diagram</figcaption></figure>
+  </div>
+</section>
+
+<div class="cols" id="experience">
+  <div class="panel">
+    <h2>Experience</h2>
+    <div class="xp"><span class="mono">Aug 2026 – now</span><div><b>Neutronix Technologies</b> · Voluntary Intern (remote)<p>Switched-mode power supplies: flyback design, LTspice simulation, Altium PCB design and assembly, STM32, SOP and Lastenheft documentation.</p></div></div>
+    <div class="xp"><span class="mono">Jul – Aug 2026</span><div><b>MZD Elektrik Elektronik A.Ş.</b> · Mechatronics Engineering Intern<p>Defense cable harness manufacturer. Production planning in IFS ERP from work order to shipment; shop-floor SOPs.</p></div></div>
+    <div class="xp"><span class="mono">Sep 2024 – Aug 2026</span><div><b>JupiterOcean Team</b> · Electronics Team Leader<p>AUV and USV electronics: Altium, ESP32, Arduino, Jetson, ROS, SolidWorks; team management.</p></div></div>
+    <div class="xp"><span class="mono">Jan – Mar 2025</span><div><b>QuadRobotics R&amp;D and Software</b> · Voluntary Intern<p>ROKETSAN KOZ payload integration; MIL-STD-810, MIL-STD-498.</p></div></div>
+    <div class="xp"><span class="mono">2024 – 2025</span><div><b>Wearable health tracking device</b> · Embedded Software Developer<p>Sensor data over I2C, SPI and UART for dysautonomia patients. 1st prize, Ankara University.</p></div></div>
+  </div>
+  <div class="panel">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Electronics</dt><dd><span class="chip">Altium Designer</span><span class="chip">PCB design &amp; assembly</span><span class="chip">SMPS / Flyback</span><span class="chip">LTspice</span><span class="chip">BMS design</span><span class="chip">RF links</span><span class="chip">I2C · SPI · UART</span></dd>
+      <dt>Embedded</dt><dd><span class="chip">STM32</span><span class="chip">ESP32</span><span class="chip">Arduino</span><span class="chip">Raspberry Pi</span><span class="chip">NVIDIA Jetson</span><span class="chip">C/C++</span><span class="chip">Linux</span></dd>
+      <dt>Autonomy &amp; AI</dt><dd><span class="chip">PID control</span><span class="chip">Kalman filter</span><span class="chip">ROS</span><span class="chip">Python</span><span class="chip">Reinforcement learning</span><span class="chip">OpenCV</span><span class="chip">YOLOv5</span><span class="chip">Sim-to-real</span></dd>
+      <dt>Mechanical</dt><dd><span class="chip">SolidWorks</span><span class="chip">Siemens NX</span><span class="chip">3D printing</span></dd>
+      <dt>Process &amp; standards</dt><dd><span class="chip">MIL-STD-810</span><span class="chip">MIL-STD-498</span><span class="chip">SOP</span><span class="chip">Lastenheft</span><span class="chip">IFS ERP</span></dd>
+      <dt>Languages</dt><dd><span class="chip">Turkish</span><span class="chip">English</span><span class="chip">Danish</span></dd>
+    </dl>
+  </div>
+</div>
+
+<footer>
+  <span class="mono">Remzi Efe Demir · Mechatronics Engineering</span>
+  <span class="mono">Atılım University · Ankara</span>
+</footer>
+</div>
+
+</body>
+</html>
